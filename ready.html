@@ -13,16 +13,20 @@
       justify-content: center;
       align-items: center;
       min-height: 100vh;
+      overflow: hidden;
     }
 
     .card {
       display: flex;
+      flex-direction: row-reverse; /* so photos appear on the left */
       width: 90%;
       max-width: 1000px;
       background-color: white;
       border-radius: 20px;
-      box-shadow: 0 0 20px #ffb6c1;
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.7), 0 0 20px #ffb6c1;
       overflow: hidden;
+      border: 3px solid white;
+      position: relative;
     }
 
     .message {
@@ -30,6 +34,7 @@
       padding: 30px;
       color: #ff69b4;
       font-size: 18px;
+      z-index: 1;
     }
 
     .message h2 {
@@ -52,7 +57,7 @@
       height: auto;
       border-radius: 10px;
       object-fit: cover;
-      box-shadow: 0 0 10px #ffc0cb;
+      box-shadow: 0 0 15px #ffc0cb;
       opacity: 0;
       animation: fadeIn 1s forwards;
     }
@@ -66,10 +71,32 @@
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
+
+    .sparkle {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0;
+      animation: sparkle 2s infinite ease-in-out;
+    }
+
+    @keyframes sparkle {
+      0% { opacity: 0; transform: scale(1) translateY(0); }
+      50% { opacity: 1; transform: scale(1.5) translateY(-10px); }
+      100% { opacity: 0; transform: scale(1) translateY(0); }
+    }
   </style>
 </head>
 <body>
   <div class="card">
+    <div class="photos">
+      <img src="memory1.jpg" alt="Memory 1">
+      <img src="photo2.jpg" alt="Memory 2">
+      <img src="photo3.jpg" alt="Memory 3">
+      <img src="photo4.jpg" alt="Memory 4">
+    </div>
     <div class="message">
       <h2>Happy Birthday Andrea 💖</h2>
       <p>
@@ -83,12 +110,18 @@
       <p>With love,  
       <br><strong>[Your Name]</strong></p>
     </div>
-    <div class="photos">
-      <img src="memory1.jpg" alt="Memory 1">
-      <img src="photo2.jpg" alt="Memory 2">
-      <img src="photo3.jpg" alt="Memory 3">
-      <img src="photo4.jpg" alt="Memory 4">
-    </div>
+    <!-- Sparkles -->
+    <script>
+      for (let i = 0; i < 25; i++) {
+        const sparkle = document.createElement('div');
+        sparkle.classList.add('sparkle');
+        sparkle.style.left = Math.random() * 100 + '%';
+        sparkle.style.top = Math.random() * 100 + '%';
+        sparkle.style.animationDelay = (Math.random() * 2) + 's';
+        sparkle.style.animationDuration = (2 + Math.random() * 2) + 's';
+        document.body.appendChild(sparkle);
+      }
+    </script>
   </div>
 </body>
 </html>
