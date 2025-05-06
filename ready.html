@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Your Birthday Card</title>
+  <style>
+    body {
+      background-color: #fff0f5;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .card {
+      display: flex;
+      width: 90%;
+      max-width: 1000px;
+      background-color: white;
+      border-radius: 20px;
+      box-shadow: 0 0 20px #ffb6c1;
+      overflow: hidden;
+    }
+
+    .message {
+      flex: 1;
+      padding: 30px;
+      color: #ff69b4;
+      font-size: 18px;
+    }
+
+    .message h2 {
+      font-size: 26px;
+      margin-bottom: 20px;
+      color: #ff1493;
+    }
+
+    .photos {
+      flex: 1;
+      background: #ffe4e1;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      padding: 20px;
+    }
+
+    .photos img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      object-fit: cover;
+      box-shadow: 0 0 10px #ffc0cb;
+      opacity: 0;
+      animation: fadeIn 1s forwards;
+    }
+
+    .photos img:nth-child(1) { animation-delay: 0.3s; }
+    .photos img:nth-child(2) { animation-delay: 0.6s; }
+    .photos img:nth-child(3) { animation-delay: 0.9s; }
+    .photos img:nth-child(4) { animation-delay: 1.2s; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="message">
+      <h2>Happy Birthday Andrea 💖</h2>
+      <p>
+        You are one of the most thoughtful, kind, and unforgettable people in my life.
+        I hope this card brings a smile to your face — just like you’ve brought to mine a thousand times over.
+      </p>
+      <p>
+        Here’s a little collection of memories that remind me how lucky I am to know you.
+        May your birthday be filled with as much joy as you've given everyone around you. 🎂💫
+      </p>
+      <p>With love,  
+      <br><strong>[Your Name]</strong></p>
+    </div>
+    <div class="photos">
+      <img src="https://drive.google.com/uc?export=view&id=1XvsYuXl6zXx8BQuSuz5PERMii-UxEZVW" alt="Memory 1">
+      <img src="photo2.jpg" alt="Memory 2">
+      <img src="photo3.jpg" alt="Memory 3">
+      <img src="photo4.jpg" alt="Memory 4">
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Surprise!</title>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+  <style>
+    body {
+      background-color: #fff0f5;
+      text-align: center;
+      font-family: Arial, sans-serif;
+      min-height: 100vh;
+      margin: 0;
+      padding-top: 100px;
+      color: #ff69b4;
+      position: relative;
+      overflow-x: hidden;
+    }
+    #surpriseButton {
+      padding: 15px 30px;
+      font-size: 20px;
+      border: none;
+      border-radius: 10px;
+      background-color: #ff69b4;
+      color: white;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: 0.3s;
+      box-shadow: 0 0 10px #ff69b4, 0 0 20px #ff69b4;
+    }
+    #surpriseButton:hover {
+      background-color: #ff1493;
+      box-shadow: 0 0 15px #ff1493, 0 0 30px #ff1493;
+    }
+    #cake {
+      position: absolute;
+      top: 50%;
+      left: -300px; /* Start hidden */
+      transform: translateY(-50%);
+      width: 200px;
+      display: none;
+      transition: all 1s ease;
+    }
+    #message {
+      font-size: 24px;
+      margin-top: 40px;
+      display: none;
+    }
+    #videoContainer {
+      display: none;
+      margin-top: 30px;
+    }
+    video {
+      width: 80%;
+      max-width: 600px;
+      border: 5px solid #ff69b4;
+      border-radius: 20px;
+      box-shadow: 0 0 20px #ff69b4;
+    }
+  </style>
+</head>
+<body>
+  <h1>Click here for a surprise!</h1>
+  <button id="surpriseButton">Click Me!</button>
+  <img id="cake" src="https://i.imgur.com/fYVfvkf.png" alt="Birthday Cake">
+  <div id="message">
+    I'm sorry, I didn't think you would click here... <br> 
+    but here's a core memory video I have of you. 🎥💖
+  </div>
+  <div id="videoContainer">
+    <video controls>
+      <source src="your-video.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <script>
+    const button = document.getElementById('surpriseButton');
+    const cake = document.getElementById('cake');
+    const message = document.getElementById('message');
+    const videoContainer = document.getElementById('videoContainer');
+
+    button.addEventListener('click', () => {
+      button.style.display = 'none';
+
+      // Confetti blast
+      confetti({
+        particleCount: 200,
+        spread: 70,
+        origin: { y: 0.6 }
+      });
+
+      // Slide in cake
+      cake.style.display = 'block';
+      setTimeout(() => {
+        cake.style.left = '20px'; // Move onto screen
+      }, 100);
+
+      // Show message and video
+      setTimeout(() => {
+        message.style.display = 'block';
+      }, 1200);
+
+      setTimeout(() => {
+        videoContainer.style.display = 'block';
+      }, 1800);
+    });
+  </script>
+</body>
+</html>
