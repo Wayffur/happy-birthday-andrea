@@ -32,14 +32,12 @@
       background-color: #ff1493;
       box-shadow: 0 0 15px #ff1493, 0 0 30px #ff1493;
     }
-    #cake {
+    #meme {
       position: absolute;
-      top: 50%;
-      left: -300px; /* Start hidden */
-      transform: translateY(-50%);
+      bottom: 20px;
+      left: 20px;
       width: 200px;
       display: none;
-      transition: all 1s ease;
     }
     #message {
       font-size: 24px;
@@ -62,7 +60,7 @@
 <body>
   <h1>Click here for a surprise!</h1>
   <button id="surpriseButton">Click Me!</button>
-  <img id="cake" src="https://i.imgur.com/fYVfvkf.png" alt="Birthday Cake">
+  <img id="meme" src="Rmeme.jpg" alt="Meme Reaction">
   <div id="message">
     I'm sorry, I didn't think you would click here... <br> 
     but here's a core memory video I have of you. 🎥💖
@@ -76,7 +74,7 @@
 
   <script>
     const button = document.getElementById('surpriseButton');
-    const cake = document.getElementById('cake');
+    const meme = document.getElementById('meme');
     const message = document.getElementById('message');
     const videoContainer = document.getElementById('videoContainer');
 
@@ -90,16 +88,13 @@
         origin: { y: 0.6 }
       });
 
-      // Slide in cake
-      cake.style.display = 'block';
-      setTimeout(() => {
-        cake.style.left = '20px'; // Move onto screen
-      }, 100);
+      // Show meme in bottom left
+      meme.style.display = 'block';
 
       // Show message and video
       setTimeout(() => {
         message.style.display = 'block';
-      }, 1200);
+      }, 1000);
 
       setTimeout(() => {
         videoContainer.style.display = 'block';
