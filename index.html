@@ -66,7 +66,7 @@
       box-shadow: 0 6px 16px rgba(255, 105, 180, 0.4);
     }
 
-    .hearts {
+    .floaters {
       position: fixed;
       top: 0;
       left: 0;
@@ -77,38 +77,18 @@
       overflow: hidden;
     }
 
-    .heart {
+    .floater {
       position: absolute;
-      width: 20px;
-      height: 20px;
-      background-color: #ff69b4;
-      transform: rotate(45deg);
+      width: 30px;
+      height: 30px;
+      background-size: cover;
+      background-repeat: no-repeat;
       animation: float 6s infinite ease-in;
     }
 
-    .heart:before,
-    .heart:after {
-      content: "";
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background-color: #ff69b4;
-      border-radius: 50%;
-    }
-
-    .heart:before {
-      top: -10px;
-      left: 0;
-    }
-
-    .heart:after {
-      left: -10px;
-      top: 0;
-    }
-
     @keyframes float {
-      0% { transform: translateY(0) rotate(45deg); opacity: 1; }
-      100% { transform: translateY(-120vh) rotate(45deg); opacity: 0; }
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-120vh) scale(0.8); opacity: 0; }
     }
   </style>
 </head>
@@ -121,19 +101,26 @@
     <button onclick="location.href='push.html'">Ayooooo</button>
   </div>
 
-  <div class="hearts">
-    <!-- generate hearts with JS -->
-  </div>
+  <div class="floaters" id="floaters"></div>
 
   <script>
-    for (let i = 0; i < 20; i++) {
-      const heart = document.createElement('div');
-      heart.classList.add('heart');
-      heart.style.left = Math.random() * 100 + 'vw';
-      heart.style.animationDuration = 4 + Math.random() * 4 + 's';
-      heart.style.opacity = Math.random();
-      heart.style.top = 100 + Math.random() * 50 + 'vh';
-      document.querySelector('.hearts').appendChild(heart);
+    const floaters = document.getElementById('floaters');
+    const images = [
+      'https://emojicdn.elk.sh/🍰', // cake
+      'https://emojicdn.elk.sh/💖', // heart
+      'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Sabrina_Carpenter_2023.jpg/120px-Sabrina_Carpenter_2023.jpg' // sabrina
+    ];
+
+    for (let i = 0; i < 25; i++) {
+      const item = document.createElement('div');
+      item.classList.add('floater');
+      item.style.left = Math.random() * 100 + 'vw';
+      item.style.top = 100 + Math.random() * 50 + 'vh';
+      item.style.animationDuration = 4 + Math.random() * 4 + 's';
+      item.style.opacity = Math.random();
+      const img = images[Math.floor(Math.random() * images.length)];
+      item.style.backgroundImage = `url('${img}')`;
+      floaters.appendChild(item);
     }
   </script>
 </body>
