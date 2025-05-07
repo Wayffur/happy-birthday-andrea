@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <title>Your Birthday Card</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       background-color: #fff0f5;
       font-family: Arial, sans-serif;
       margin: 0;
-      padding: 40px;
+      padding: 20px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -19,7 +20,7 @@
     .card {
       display: flex;
       flex-direction: row-reverse;
-      width: 90%;
+      width: 100%;
       max-width: 1000px;
       background-color: white;
       border-radius: 20px;
@@ -27,39 +28,48 @@
       overflow: hidden;
       border: 3px solid white;
       position: relative;
+      flex-wrap: wrap;
+    }
+
+    .message, .photos {
+      flex: 1 1 100%;
+      padding: 20px;
     }
 
     .message {
-      flex: 1;
-      padding: 30px;
       color: #ff69b4;
       font-size: 18px;
       z-index: 1;
     }
 
     .message h2 {
-      font-size: 26px;
+      font-size: 24px;
       margin-bottom: 20px;
       color: #ff1493;
     }
 
     .photos {
-      flex: 1;
       background: #ffe4e1;
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
       gap: 10px;
-      padding: 20px;
     }
 
     .photos img {
       width: 100%;
-      height: auto;
-      border-radius: 10px;
+      height: 100%;
+      aspect-ratio: 1 / 1;
       object-fit: cover;
+      border-radius: 10px;
       box-shadow: 0 0 15px #ffc0cb;
       opacity: 0;
       animation: fadeIn 1s forwards;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .photos img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px #ff69b4;
     }
 
     .photos img:nth-child(1) { animation-delay: 0.3s; }
