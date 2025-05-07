@@ -34,8 +34,9 @@
     }
     #meme {
       position: absolute;
-      top: 20px;
+      top: 50%;
       left: 20px;
+      transform: translateY(-50%);
       width: 150px;
       display: none;
       z-index: 10;
@@ -90,7 +91,7 @@
         origin: { y: 0.6 }
       });
 
-      // Show meme in top left
+      // Show meme in middle left
       meme.style.display = 'block';
 
       // Show message and video
