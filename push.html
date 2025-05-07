@@ -34,10 +34,11 @@
     }
     #meme {
       position: absolute;
-      bottom: 20px;
+      top: 20px;
       left: 20px;
-      width: 200px;
+      width: 150px;
       display: none;
+      z-index: 10;
     }
     #message {
       font-size: 24px;
@@ -49,8 +50,8 @@
       margin-top: 30px;
     }
     video {
-      width: 80%;
-      max-width: 600px;
+      width: 60%;
+      max-width: 500px;
       border: 5px solid #ff69b4;
       border-radius: 20px;
       box-shadow: 0 0 20px #ff69b4;
@@ -62,11 +63,11 @@
   <button id="surpriseButton">Click Me!</button>
   <img id="meme" src="Rmeme.jpg" alt="Meme Reaction">
   <div id="message">
-    I'm sorry, I didn't think you would click here... <br> 
-    but here's a core memory video I have of you. 🎥💖
+    I didn't think you'd click this far... <br> 
+    But here's one of many videos I love of when we finally met. 🎥💖
   </div>
   <div id="videoContainer">
-    <video controls>
+    <video id="memoryVideo" controls>
       <source src="your-video.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
@@ -77,6 +78,7 @@
     const meme = document.getElementById('meme');
     const message = document.getElementById('message');
     const videoContainer = document.getElementById('videoContainer');
+    const video = document.getElementById('memoryVideo');
 
     button.addEventListener('click', () => {
       button.style.display = 'none';
@@ -88,7 +90,7 @@
         origin: { y: 0.6 }
       });
 
-      // Show meme in bottom left
+      // Show meme in top left
       meme.style.display = 'block';
 
       // Show message and video
@@ -98,6 +100,7 @@
 
       setTimeout(() => {
         videoContainer.style.display = 'block';
+        video.volume = 0.5; // Set volume to 50%
       }, 1800);
     });
   </script>
